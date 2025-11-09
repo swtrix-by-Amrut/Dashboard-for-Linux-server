@@ -1,0 +1,340 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #ecf0f1;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.dashboard-title {
+    color: #3498db; /* Blue color */
+    text-align: left;
+    margin: 10px 0 30px 0;
+    font-weight: 700;
+    font-size: 2.2em;
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto;
+    }
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 8px;
+}
+
+.content {
+    min-height: 120px;
+}
+
+
+/* Add these to your existing CSS */
+
+.status-item {
+    display: flex;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.status-label {
+    font-weight: 700;
+    width: 150px;
+    color: #555;
+}
+
+.status-value {
+    flex-grow: 1;
+    font-family: monospace;
+    background-color: #f5f5f5;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.refresh-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.refresh-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Add these to your existing CSS */
+
+.action-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 8px 8px 0 0;
+    font-size: 0.95em;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn:hover {
+    background-color: #2980b9;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.action-btn::before {
+    font-size: 1.2em;
+}
+
+
+
+/* Button Styles */
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    border: 2px solid #c0392b;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.btn-danger:active {
+    transform: translateY(1px);
+}
+
+.btn-warning {
+    background-color: #f39c12;
+    color: white;
+    /* similar hover effects as btn-danger */
+}
+
+.icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.warning-text {
+    color: #e74c3c;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fdecea;
+    border-left: 4px solid #e74c3c;
+    border-radius: 4px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+
+/* drive refresh */
+
+/* Drive List Styles */
+/* Drive Container */
+/* Drive Container */
+#drives-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.drive {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.drive-info {
+  flex: 1;
+  min-width: 0; /* Allows text truncation */
+}
+
+.drive-info strong {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drive-info span {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.drive-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.mounted {
+    color: #27ae60;
+    font-size: 0.9em;
+    margin-right: 10px;
+}
+
+/* Status Messages */
+.help-text, .loading, .no-drives {
+    color: #95a5a6;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.error {
+    color: #e74c3c;
+    text-align: center;
+}
+
+/* Buttons */
+.btn-secondary-4drive {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-warning-4drive {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* Drive usage */
+.usage {
+    margin-top: 8px;
+}
+
+.usage-bar {
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.usage-stats {
+    font-size: 0.8em;
+    color: #666;
+	text-align: left;
+}
+
+.usage-fill {
+    height: 100%;
+    background: #3498db;
+    transition: width 0.3s ease;
+}
+
+/* Color the bar based on usage percentage --  Not implementing these ----------*/  
+/* .usage-green { background: #2ecc71; }  /* <80% = green */ */
+/* .usage-orange{ background: #f39c12; }  /* 80-90% = orange */ */
+/* .usage-red   { background: #e74c3c; } /* >90% = red */ */
+
+.usage-right-align {
+    display: block; /* Make it a block-level element */
+    text-align: right; /* Align its content to the right */
+}
+
+.usage-stats-leftright {
+    display: flex; /* Make the container a flex container */
+    justify-content: space-between; /* Pushes the first item to the left, the second to the right */
+    align-items: center; /* This will vertically center the items if they have different heights, useful for overall alignment */
+    width: 100%; /* Ensure the container takes up available width to allow spacing */
+}
+
+
+/* styles.css */
+.logout-button {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline from link */
+    font-weight: bold;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}

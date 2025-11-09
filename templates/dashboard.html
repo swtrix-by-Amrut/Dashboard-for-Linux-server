@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Linux Server Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="dashboard-title">My Linux Server Dashboard</h1>
+
+        <!-- First row -->
+        <div class="card">
+            <h2>System Status</h2>
+            <div class="content">
+                <div class="status-item">
+                    <span class="status-label">Uptime:</span>
+                    <span class="status-value">{{ uptime }}</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Users Connected:</span>
+                    <span class="status-value">{{ users_connected }}</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Last Updated:</span>
+                    <span class="status-value" id="last-updated">{{ current_time }}</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">IP Address:</span>
+                    <span class="status-value">{{ ip_address }}</span>
+                </div>				
+                <button class="refresh-btn" onclick="refreshData()">⟳ Refresh</button>
+            </div>
+        </div>
+
+		<!-- 1st row, 2nd column -->					   
+		<div class="card">
+			<h2>Power Controls</h2>
+			<div class="content">
+				<div class="button-group">
+					<button class="action-btn" onclick="confirmReboot()">
+						<span class="btn-icon">↻</span> Reboot
+					</button>
+					<button class="action-btn" onclick="confirmShutdown()">
+						<span class="btn-icon">⏻</span> Shutdown
+					</button>
+					<button class="action-btn" onclick="window.location.href='/logout'" >
+						<span class="btn-icon">⏻</span> Log Out
+					</button>				
+				</div>
+
+			</div>
+		</div>
+
+        <!-- Second row -->
+		<div class="card">
+			<h2>System Health <button class="refresh-btn" onclick="refreshSystemStats()">⟳</button></h2>
+			<div class="content">
+				<div class="status-grid">
+					<div class="status-item">
+						<span class="status-label">CPU Temperature:</span>
+						<span class="status-value" id="cpu-temp">Loading...</span>
+					</div>
+					<div class="status-item">
+						<span class="status-label">CPU Usage:</span>
+						<span class="status-value" id="cpu-usage">Loading...</span>
+					</div>
+				</div>
+				<div class="temp-warning" id="temp-warning"></div>
+			</div>
+		</div>
+
+		<div class="card">
+			<h2>USB Drives 
+				<button class="refresh-btn" onclick="loadDrives()">⟳ Refresh</button>
+			</h2>
+			<div class="content">
+				<div id="drives-container">
+					<p class="help-text">Click "Refresh" to detect USB drives</p>
+				</div>
+			</div>
+		</div>   
+		
+		
+		<!-- Third row -->
+		<div class="card">
+			<h2>Internal Partition status</h2>
+			<div class="content">
+				<div id="int_part-container">
+					<p class="loading-mounts">Loading mount information...</p>
+				</div>
+			</div>
+		</div>
+	
+		
+     <!--    <div class="card">
+            <h2>Updates</h2>
+            <div class="content">
+                <p>5 updates available</p>
+            </div>
+        </div>
+    </div> -->
+
+	
+	<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
